@@ -11,14 +11,17 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView printF = findViewById(R.id.printF);
-    private Button btnOk = findViewById(R.id.btnOk);
-    private Button btnCancel = findViewById(R.id.btnOk);
+    private TextView printF;
+    private Button btnOk;
+    private Button btnCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        printF = findViewById(R.id.printF);
+        btnOk = findViewById(R.id.btnOk);
+        btnCancel = findViewById(R.id.btnOk);
         View.OnClickListener onClickListener = v -> {
            printF.setText("Ты красавчик");
         };
