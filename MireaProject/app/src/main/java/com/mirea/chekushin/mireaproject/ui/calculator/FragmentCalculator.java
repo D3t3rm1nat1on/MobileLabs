@@ -44,9 +44,16 @@ public class FragmentCalculator extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-
-        float n1 = Float.parseFloat(num1.getText().toString());
-        float n2 = Float.parseFloat(num2.getText().toString());
+        float n1;
+        float n2;
+        try {
+            n1 = Float.parseFloat(num1.getText().toString());
+            n2 = Float.parseFloat(num2.getText().toString());
+        } catch (NumberFormatException e)
+        {
+            result.setText("Wrong data");
+            return;
+        }
 
         switch (v.getId()) {
             case R.id.button:
