@@ -4,7 +4,13 @@ import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
-import android.view.View;
+
+import com.mirea.chekushin.mireaproject.AppPreference.Preferences;
+
+import java.lang.reflect.Field;
+
+import static com.mirea.chekushin.mireaproject.AppPreference.*;
+import static com.mirea.chekushin.mireaproject.AppPreference.Preferences.*;
 
 public class PlayerService extends Service {
     private MediaPlayer mediaPlayer;
@@ -15,7 +21,9 @@ public class PlayerService extends Service {
     }
     @Override
     public void onCreate(){
-        mediaPlayer= MediaPlayer.create(this, R.raw.music);
+        String music = "music_" + getPreference(MUSIC_CHOICE);
+        int id = getResId(music, R.raw.class);
+        mediaPlayer= MediaPlayer.create(this, id);
         mediaPlayer.setLooping(true);
     }
     @Override
@@ -28,4 +36,14 @@ public class PlayerService extends Service {
         mediaPlayer.stop();
     }
 
+    public static int getResId(String resName, Class<?> c) {
+
+        try {
+            Field idField = c.getDeclaredField(resName);
+            return idField.getInt(idField);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
 }

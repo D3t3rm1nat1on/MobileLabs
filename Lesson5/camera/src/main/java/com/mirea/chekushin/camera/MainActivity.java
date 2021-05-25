@@ -2,6 +2,7 @@ package com.mirea.chekushin.camera;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
@@ -16,6 +17,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 0;
     private boolean isWork = false;
     private Uri imageUri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             isWork = true;
         } else {
             // Выполняется запрос к пользователь на получение необходимых разрешений
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     REQUEST_CODE_PERMISSION_CAMERA);
         }
         cameraPermissionStatus =
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         storagePermissionStatus = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -58,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
             imageView.setImageURI(imageUri);
         }
     }
+
     public void imageViewOnClick(View view) {
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // проверка на наличие разрешений для камеры
         ComponentName tmp = cameraIntent.resolveActivity(getPackageManager());
-        if (tmp != null && isWork == true)
-        {
+        if (tmp != null && isWork == true) {
             File photoFile = null;
             try {
                 photoFile = createImageFile();
@@ -77,13 +81,15 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(cameraIntent, CAMERA_REQUEST);
         }
     }
-        /**
-        * Производится генерирование имени файла на основе текущего времени и создание файла
-        * в директории Pictures на ExternelStorage.
-        * class.
-        * @return File возвращается объект File .
-        * @exception IOException если возвращается ошибка записи в файл
-        */
+
+    /**
+     * Производится генерирование имени файла на основе текущего времени и создание файла
+     * в директории Pictures на ExternelStorage.
+     * class.
+     *
+     * @return File возвращается объект File .
+     * @throws IOException если возвращается ошибка записи в файл
+     */
     private File createImageFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "IMAGE_" + timeStamp + "_";
@@ -91,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         return File.createTempFile(imageFileName, ".jpg", storageDirectory);
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 // производится проверка полученного результата от пользователя на запрос разрешения Camera

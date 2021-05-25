@@ -16,7 +16,11 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.mirea.chekushin.mireaproject.AppPreference;
 import com.mirea.chekushin.mireaproject.R;
+
+import static com.mirea.chekushin.mireaproject.AppPreference.*;
+import static com.mirea.chekushin.mireaproject.AppPreference.Preferences.*;
 
 public class BrowserFragment extends Fragment {
 
@@ -26,7 +30,8 @@ public class BrowserFragment extends Fragment {
         View root = inflater.inflate(R.layout.browser_fragment, container, false);
         web = root.findViewById(R.id.ww);
         web.setWebViewClient(new WebViewClient());
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ya.ru"));
+        String uri = getPreference(BROWSER_SEARCH);
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
         Uri data = intent.getData();
         web.loadUrl(data.toString());
         return root;

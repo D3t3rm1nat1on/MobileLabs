@@ -20,4 +20,14 @@
         android:name="com.mirea.chekushin.mireaproject.ui.calculator.FragmentCalculator"
         android:label="@string/menu_calculator"
         tools:layout="@layout/fragment_calculator" />
+    <fragment
+        android:id="@+id/nav_hardware"
+        android:name="com.mirea.chekushin.mireaproject.ui.hardware.HardwareFragment"
+        android:label="@string/menu_hardware"
+        tools:layout="@layout/fragment_hardware" />
+    <fragment
+        android:id="@+id/nav_options"
+        android:name="com.mirea.chekushin.mireaproject.ui.options.OptionsFragment"
+        android:label="@string/menu_options"
+        tools:layout="@layout/fragment_options" />
 </navigation>
