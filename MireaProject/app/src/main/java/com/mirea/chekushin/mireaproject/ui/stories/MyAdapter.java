@@ -3,9 +3,7 @@ package com.mirea.chekushin.mireaproject.ui.stories;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,7 +12,7 @@ import com.mirea.chekushin.mireaproject.R;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    public static View FUCKING_ROOT;
+    public static View ROOT;
     private List<Item> items;
 
     public MyAdapter(List<Item> items) {
@@ -37,15 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-
-        // - get data from your itemsData at this position
-        // - replace the contents of the view with that itemsData
-
-//        TextView a = (TextView) viewHolder.itemView;
-//        int c = 4;
         viewHolder.txtViewTitle.setText(items.get(position).getName());
-
-
     }
 
     // inner class to hold a reference to each item of RecyclerView
@@ -55,8 +45,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         public ViewHolder(View itemLayoutView) {
             super(itemLayoutView);
-            View a = MyAdapter.FUCKING_ROOT.findViewById(R.id.name);
-            txtViewTitle = (TextView) MyAdapter.FUCKING_ROOT.findViewById(R.id.name);
+            View a = MyAdapter.ROOT.findViewById(R.id.name);
+            txtViewTitle = (TextView) MyAdapter.ROOT.findViewById(R.id.name);
 //            txtViewTitle = (TextView) itemLayoutView.findViewById(R.id.item_title);
         }
     }

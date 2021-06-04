@@ -2,7 +2,6 @@ package com.mirea.chekushin.mireaproject.ui.stories;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mirea.chekushin.mireaproject.R;
 
@@ -52,7 +50,7 @@ public class StoriesFragment extends Fragment {
 
 
         adapter = new MyAdapter(items);
-        adapter.FUCKING_ROOT = root;
+        adapter.ROOT = root;
 
         recyclerView.setAdapter(adapter);
 
