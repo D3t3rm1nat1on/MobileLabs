@@ -22,5 +22,8 @@
         <item
             android:id="@+id/nav_stories"
             android:title="@string/menu_stories" />
+        <item
+            android:id="@+id/nav_info"
+            android:title="@string/menu_info" />
     </group>
 </menu>

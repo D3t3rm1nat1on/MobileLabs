@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "780026568949",
+    "project_id": "lesson7-8ed2b",
+    "storage_bucket": "lesson7-8ed2b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:780026568949:android:8f7ae2a9b4d2f81802e5bc",
+        "android_client_info": {
+          "package_name": "com.mirea.chekushin.firebaseauth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "780026568949-tn25imfn3jel860c0scn31b49eqsreb4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACtaMqO9ZWa6UwqmgRva7kP66Rwl9SuvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "780026568949-tn25imfn3jel860c0scn31b49eqsreb4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
